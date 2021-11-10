@@ -66,7 +66,7 @@ INSERT INTO animals(
   '2020-02-08',
   0,
   '0',
-  11
+  -11
 );
 
 INSERT INTO animals(
@@ -80,7 +80,7 @@ INSERT INTO animals(
   '2022-12-15',
   2,
   '1',
-  5.7
+  -5.7
 );
 
 INSERT INTO animals(
@@ -94,7 +94,7 @@ INSERT INTO animals(
   '1993-04-02',
   3,
   '0',
-  12.13
+  -12.13
 );
 
 INSERT INTO animals(
@@ -108,7 +108,7 @@ INSERT INTO animals(
   '2005-06-12',
   1,
   '1',
-  45
+  -45
 );
 
 INSERT INTO animals(
