@@ -7,7 +7,7 @@
 
 - GitHub: [@emmyobonyo](https://github.com/emmyobonyo)
 - Twitter: [@emmyobonyo](https://twitter.com/emmyobonyo)
-- LinkedIn: [Emmanuel](https://linkedin.com/in/emmyobonyo)
+- LinkedIn: [Emmanuel Obonyo](https://linkedin.com/in/emmyobonyo)
 
 ## 🤝 Contributing
 
