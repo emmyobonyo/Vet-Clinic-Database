@@ -32,3 +32,31 @@ ALTER TABLE animals ADD FOREIGN KEY (species_id) REFERENCES species(id);
 ALTER TABLE animals ADD owner_id INT;
 
 ALTER TABLE animals ADD FOREIGN KEY (owner_id) REFERENCES owners(id);
+
+CREATE TABLE vets(
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name VARCHAR(250),
+  age INT,
+  date_of_graduation DATE
+);
+
+CREATE TABLE specializations(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  species_id INT,
+  vet_id INT
+);
+
+ALTER TABLE specializations ADD FOREIGN KEY (species_id) REFERENCES species(id);
+ALTER TABLE specializations ADD FOREIGN KEY (vet_id) REFERENCES vets(id);
+
+CREATE TABLE visits(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  animal_id INT,
+  vet_id INT,
+  date_of_visit DATE
+);
+
+ALTER TABLE visits ADD FOREIGN KEY (animal_id) REFERENCES animals(id);
+
+ALTER TABLE visits ADD FOREIGN KEY (vet_id) REFERENCES vets(id);
+
