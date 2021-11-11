@@ -43,3 +43,68 @@ SELECT neutered, SUM(escape_attempts) FROM animals GROUP BY neutered;
 SELECT species, min(weight_kg), max(weight_kg) FROM animals GROUP BY species;
 
 SELECT name, AVG(escape_attempts) FROM animals WHERE date_of_birth > '1990-01-01' AND date_of_birth < '2000-01-01' GROUP BY name;
+
+SELECT vets.name, animals.name, visits.date_of_visit
+FROM vets
+JOIN visits
+ON vets.id = visits.vet_id
+JOIN animals
+ON animals.id = visits.animal_id
+WHERE visits.vet_id = 1 ORDER BY visits.date_of_visit desc LIMIT 1;
+
+SELECT count (animals.name), vets.name
+FROM animals
+JOIN visits
+ON animals.id = visits.animal_id
+JOIN vets
+ON vets.id = visits.vet_id
+WHERE vets.name = 'Stephanie Mendez'
+GROUP BY vets.name;
+
+SELECT vets.name, species.name
+FROM vets
+JOIN specializations
+ON specializations.vet_id = vets.id
+JOIN species
+ON specializations.species_id = species.id;
+
+SELECT animals.name, vets.name
+FROM animals
+JOIN visits
+ON visits.animal_id = animals.id
+JOIN vets
+ON visits.vet_id = vets.id
+WHERE visits.date_of_visit >= '2020-04-01' AND visits.date_of_visit <= '2020-08-30' AND vets.name = 'Stephanie Mendez';
+
+SELECT animals.name, count(visits.date_of_visit)
+FROM animals
+JOIN visits
+on animals.id = visits.animal_id
+GROUP BY animals.name ORDER BY count desc LIMIT 1;
+
+SELECT animals.name, vets.name, visits.date_of_visit
+FROM animals
+JOIN visits
+ON animals.id = visits.animal_id
+JOIN vets
+ON vets.id = visits.vet_id
+WHERE vets.name = 'Maisy Smith' ORDER BY date_of_visit LIMIT 1;
+
+SELECT animals.name, vets.name, visits.date_of_visit
+FROM animals JOIN visits
+ON animals.id = visits.animal_id
+JOIN vets
+ON vets.id = visits.vet_id ORDER BY date_of_visit desc LIMIT 1;
+
+SELECT count(vet_id)
+FROM visits
+JOIN animals
+ON visits.animal_id = animals.species_id;
+
+SELECT species.name, count(species.name)
+FROM species
+JOIN specializations
+ON species.id = specializations.species_id
+JOIN vets
+ON vets.id = specializations.vet_id
+GROUP BY species.name;
