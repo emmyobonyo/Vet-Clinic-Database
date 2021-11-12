@@ -63,10 +63,10 @@ GROUP BY vets.name;
 
 SELECT vets.name, species.name
 FROM vets
-JOIN specializations
+FULL JOIN specializations
 ON specializations.vet_id = vets.id
-JOIN species
-ON specializations.species_id = species.id;
+FULL JOIN species
+ON species.id = specializations.species_id;
 
 SELECT animals.name, vets.name
 FROM animals
@@ -101,10 +101,10 @@ FROM visits
 JOIN animals
 ON visits.animal_id = animals.species_id;
 
-SELECT species.name, count(species.name)
-FROM species
-JOIN specializations
-ON species.id = specializations.species_id
-JOIN vets
-ON vets.id = specializations.vet_id
-GROUP BY species.name;
+SELECT COUNT(animals.species_id), species.name
+FROM visits
+JOIN vets ON visits.vet_id = vets.id
+JOIN animals ON animals.id = visits.animal_id
+JOIN species ON species.id = animals.species_id
+WHERE visits.vet_id = (SELECT id from vets WHERE name = 'Maisy Smith')
+GROUP BY species.name ORDER BY count desc LIMIT 1;
